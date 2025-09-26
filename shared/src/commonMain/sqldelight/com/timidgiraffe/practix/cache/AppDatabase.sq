@@ -1,0 +1,28 @@
+CREATE TABLE PractixList(
+        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        count INTEGER NOT NULL,
+        dateAdded TEXT NOT NULL
+);
+
+insertSession:
+INSERT INTO PractixList(name, count, dateAdded)
+VALUES ( ?, ?, ?);
+
+sessionExists:
+SELECT EXISTS(SELECT 1 FROM PractixList WHERE name = ?);
+
+getAllSessions:
+SELECT * FROM PractixList ORDER BY dateAdded DESC;
+
+getSessionById:
+SELECT id FROM PractixList WHERE name = ?;
+
+updateSessionCount:
+UPDATE PractixList SET count = ? WHERE name = ?;
+
+removeSession:
+DELETE FROM PractixList WHERE id = ?;
+
+removeAllSessions:
+DELETE FROM PractixList;
